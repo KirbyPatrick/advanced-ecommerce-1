@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import ProductDetials from "./components/ProductDetail";
 import Footer from "./components/Footer";
 import State from "./state";
+import CheckoutButton from "./components/CheckoutButton";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends Component {
       itemsInCart: []
     };
   }
-
+  //function to handle the onClick on the product Details components.
   handleClick = itemClicked => {
     const newItemsInCart = this.state.itemsInCart;
     newItemsInCart.push(itemClicked);
@@ -45,18 +46,20 @@ class App extends Component {
                   Category 3
                 </a>
               </div>
-              <button>Checkout</button>
+              <CheckoutButton />
             </div>
 
             <div className="col-md-9">
               <Carousel />
               <div className="row">
+                {/* below i'm pulling the info from the state into the component
+                as opposed to hard coding them. */}
                 <ProductDetials
                   price={State.products[0].price}
-                  productName="Name 1"
-                  description="lorem ipsem"
-                  reviews="17"
-                  productImageUrl="http:placehold.it/320x150"
+                  productName={State.products[0].name}
+                  description={State.products[0].description}
+                  reviews={State.products[0].reviews}
+                  productImageUrl={State.products[0].imgUrl}
                   onClick={this.handleClick}
                 />
                 <ProductDetials

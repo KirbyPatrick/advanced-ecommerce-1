@@ -20,6 +20,8 @@ const ProductDetials = props => {
           <button
             onClick={() =>
               props.onClick({
+                //looking in the react tool in my browser, i can see the product name and
+                // price being passed on click due to the code below
                 productInCart: props.productName,
                 productPriceInCart: props.price
               })
